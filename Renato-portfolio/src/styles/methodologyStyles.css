@@ -1,0 +1,62 @@
+
+/* Dark mode style fixes for DMAIC methodology steps */
+.methodology-step {
+  @apply font-semibold text-lg;
+}
+
+.methodology-step-detail {
+  @apply text-sm;
+}
+
+/* Light mode styles */
+.methodology-step {
+  @apply text-primary-700;
+}
+
+.methodology-step-detail {
+  @apply text-gray-600;
+}
+
+/* Dark mode styles */
+:root.dark .methodology-step {
+  @apply text-primary-300 !important;
+}
+
+:root.dark .methodology-step-detail {
+  @apply text-gray-300 !important;
+}
+
+/* Override for specific elements in dark mode */
+.bg-primary-50.dark\:bg-primary-950\/30 .methodology-step {
+  @apply text-primary-700 dark:text-primary-300 !important;
+}
+
+.bg-primary-50.dark\:bg-primary-950\/30 .methodology-step-detail {
+  @apply text-muted-foreground dark:text-gray-300 !important;
+}
+
+/* Fix for text in methodology grid */
+.grid.grid-cols-2.md\:grid-cols-5.gap-4.mt-8 .font-bold {
+  @apply text-foreground dark:text-primary-300 !important;
+}
+
+.grid.grid-cols-2.md\:grid-cols-5.gap-4.mt-8 .text-xs {
+  @apply text-muted-foreground dark:text-gray-300 !important;
+}
+
+/* Specific fixes for DMAIC steps in dark mode */
+:root.dark .dmaic-step-define,
+:root.dark .dmaic-step-measure,
+:root.dark .dmaic-step-analyze,
+:root.dark .dmaic-step-improve,
+:root.dark .dmaic-step-control {
+  @apply text-primary-300 !important;
+}
+
+:root.dark .dmaic-goal-define,
+:root.dark .dmaic-goal-measure,
+:root.dark .dmaic-goal-analyze,
+:root.dark .dmaic-goal-improve,
+:root.dark .dmaic-goal-control {
+  @apply text-gray-300 !important;
+}

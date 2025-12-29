@@ -1,0 +1,42 @@
+/* mapainterativo.module.css*/
+.mapContainer {
+  position: relative;
+  --defaultColor: #999999;
+  --hoverColor: #90cdf4;
+  --selectedColor: #3182ce;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 1 / 1;
+}
+
+.stateGroup path {
+  transition: fill 0.2s ease;
+  pointer-events: auto;
+}
+
+.stateGroup.highlighted path {
+  fill: var(--hoverColor) !important;
+}
+
+.stateGroup.selected path {
+  fill: var(--selectedColor) !important;
+}
+
+.tooltip {
+  position: absolute;
+  padding: 4px 8px;
+  font-size: 0.875rem;
+  background: white;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  pointer-events: none;
+  white-space: nowrap;
+  transform: translate(-50%, -120%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.tooltipVisible {
+  opacity: 1;
+}

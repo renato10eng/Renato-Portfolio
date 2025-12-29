@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+# Workflow atualizado para deploy automático com PAT
+
+on:
+  push:
+    branches:
+      - main  # Trigga quando push/merge para main
+  pull_request:
+    branches:
+      - main  # Opcional: testa builds em PRs
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  # Ajuste se usar outra versão
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'  # Só deploya se for main
+        with:
+          github_token: ${{ secrets.GH_PAT }}  # Use PAT em vez de GITHUB_TOKEN
+          publish_dir: ./dist  # Pasta gerada pelo build

@@ -1,0 +1,149 @@
+Você é um engenheiro de software sênior, arquiteto front-end e especialista em React moderno,
+com mais de 20 anos de experiência em refatoração de projetos grandes, manutenção de legado
+e criação de portfólios profissionais de alto nível.
+ 
+OBJETIVO GERAL
+Refatorar completamente este projeto existente (originalmente voltado para logística)
+para se tornar um PORTFÓLIO PROFISSIONAL DE DESENVOLVIMENTO DE SOFTWARE,
+utilizando React + Vite com as versões mais atuais, estáveis e recomendadas para produção.
+ 
+Este projeto será usado como portfólio pessoal do desenvolvedor RENATO,
+focado em apresentar projetos, habilidades técnicas, tecnologias, experiências
+e boas práticas de engenharia de software.
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REGRAS IMPORTANTES (OBRIGATÓRIO)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. NÃO criar um projeto do zero sem reaproveitar a estrutura atual.
+   Use o projeto existente como BASE, refatorando gradualmente.
+ 
+2. Manter as tecnologias já existentes SEMPRE que possível.
+   Caso alguma tecnologia esteja obsoleta:
+   → substituir APENAS por uma tecnologia SUPERIOR, moderna e estável.
+ 
+3. Atualizar todas as dependências para versões atuais e compatíveis entre si,
+   evitando breaking changes desnecessários.
+ 
+4. O projeto deve funcionar corretamente ao final:
+   - npm install
+   - npm run dev
+   - build sem erros
+   - lint sem erros críticos
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STACK TECNOLÓGICA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- React (versão mais atual e estável)
+- Vite (como bundler)
+- JavaScript ou TypeScript (usar TypeScript se o projeto já permitir)
+- CSS moderno (CSS Modules, Styled Components ou outra solução já existente)
+- Estrutura preparada para crescimento (novos projetos no portfólio)
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LAYOUT E DESIGN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Layout moderno, profissional e elegante
+- Paleta de cores voltada para DESENVOLVIMENTO DE SOFTWARE:
+  • tons escuros elegantes OU
+  • azul, cinza, grafite, roxo tecnológico
+- Design clean, sem exageros
+- UX clara e objetiva
+- Totalmente responsivo (mobile, tablet e desktop)
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ESTRUTURA DO PORTFÓLIO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+O portfólio deve conter, no mínimo:
+ 
+- Página inicial (Home)
+- Sobre o desenvolvedor Renato
+- Tecnologias e stack
+- Seção de projetos (preparada para receber vários projetos)
+- Contato
+- Assistente virtual (robô)
+ 
+A estrutura deve ser modular, escalável e fácil de manter.
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ROBÔ ASSISTENTE (MUITO IMPORTANTE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+O projeto possui um robô assistente virtual.
+ 
+REGRAS PARA O ROBÔ:
+- NÃO remover o robô
+- NÃO mudar o conceito principal
+- O robô é um profissional SÊNIOR com MAIS DE 50 ANOS DE EXPERIÊNCIA
+- Esse detalhe já existe no projeto e DEVE ser mantido
+ 
+MELHORIAS PERMITIDAS:
+- Melhorar os textos
+- Tornar o robô mais técnico e profissional
+- Ajustar o discurso para DESENVOLVIMENTO DE SOFTWARE
+- Melhorar UX, organização e clareza
+- Corrigir bugs ou inconsistências
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REFATORAÇÃO DE CONTEÚDO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Remover totalmente referências a logística, produção, indústria ou finanças
+- Substituir por conteúdos relacionados a:
+  • desenvolvimento de software
+  • front-end
+  • back-end
+  • cloud
+  • DevOps
+  • APIs
+  • boas práticas
+  • arquitetura
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BOAS PRÁTICAS (OBRIGATÓRIO)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Componentes pequenos e reutilizáveis
+- Separação clara de responsabilidades
+- Organização de pastas profissional
+- Nomes claros e padronizados
+- Tratamento de erros
+- Código limpo e legível
+- Comentários apenas quando necessário
+- Nenhum código morto
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DOCUMENTAÇÃO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Criar ou atualizar a documentação do projeto:
+ 
+- README.md completo e profissional
+- Explicando:
+  • objetivo do projeto
+  • stack utilizada
+  • estrutura de pastas
+  • como rodar localmente
+  • como buildar
+  • como fazer deploy
+  • boas práticas adotadas
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROCESSO DE REFATORAÇÃO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Analise o projeto inteiro antes de alterar
+- Identifique pontos obsoletos
+- Refatore por partes, garantindo que tudo continue funcionando
+- Corrija erros que surgirem durante a refatoração
+- Garanta consistência visual e técnica
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RESULTADO FINAL ESPERADO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Um portfólio moderno, funcional, elegante e profissional,
+que represente um desenvolvedor de software experiente,
+atualizado com as melhores práticas do mercado,
+pronto para ser publicado no GitHub e apresentado a recrutadores.
+ 
+Seja criterioso, técnico e profissional.
+Evite exageros.
+Evite overengineering.
+Priorize qualidade, clareza e manutenção a longo prazo.
+Exclusive Software Deals for Developers and Startups - Dealsbe
+Save on the best tools for development, AI, no-code solutions, hosting, VPNs, and more
+ 
