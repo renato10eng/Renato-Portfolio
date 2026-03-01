@@ -78,13 +78,13 @@ export function StatsSection() {
       <div className="absolute bottom-0 left-0 p-20 bg-secondary/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
 
       <div className="container-padding max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
-            <div key={index} className="space-y-3 group hover:-translate-y-1 transition-transform duration-300">
-              <div className="text-5xl md:text-6xl font-bold font-heading bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <div key={index} className="glass-card p-8 md:p-10 text-center space-y-3 group hover:border-white/20 hover:-translate-y-2 transition-all duration-300">
+              <div className="text-5xl md:text-6xl font-black font-heading bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent group-hover:from-secondary group-hover:via-accent group-hover:to-primary transition-all duration-300">
                 {stat.prefix}{Math.round(counts[index] || 0)}{stat.suffix}
               </div>
-              <p className="text-muted-foreground font-medium text-lg">
+              <p className="text-muted-foreground font-semibold text-sm uppercase tracking-wider">
                 {'id' in stat ? stat.label : t(stat.labelKey)}
               </p>
             </div>

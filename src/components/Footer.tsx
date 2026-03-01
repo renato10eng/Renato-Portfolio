@@ -9,13 +9,15 @@ export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-card pt-24 pb-12 border-t border-border/40 mt-auto">
+    <footer className="bg-background pt-32 pb-12 border-t border-white/10 dark:border-white/5 mt-auto">
       <div className="container-padding max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
           <div className="md:col-span-4 space-y-6">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <span className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg shadow-lg">R</span>
-              <span className="font-heading text-xl font-bold tracking-tight">Renato<span className="text-primary">.Dev</span></span>
+              <span className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary/25 dark:shadow-primary/15">R</span>
+              <span className="font-heading text-lg font-black tracking-tighter">
+                Renato<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">.dev</span>
+              </span>
             </Link>
             <p className="text-muted-foreground max-w-sm leading-relaxed">
               {t('company_description')}

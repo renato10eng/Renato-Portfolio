@@ -50,18 +50,18 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-300 border-b border-transparent",
+        "fixed top-0 z-50 w-full transition-all duration-300 border-b",
         isScrolled
-          ? "glass-nav py-2"
-          : "bg-transparent py-4"
+          ? "glass-nav border-white/10 dark:border-white/5 py-3"
+          : "bg-transparent border-transparent py-4"
       )}
     >
       <div className="container-padding max-w-7xl mx-auto flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center gap-2.5 group">
-            <span className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary/25 transition-transform group-hover:scale-105">R</span>
-            <span className={cn("font-heading text-xl font-bold tracking-tight transition-colors", getTextColor())}>
-              Renato<span className="text-primary">.Dev</span>
+            <span className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary/25 dark:shadow-primary/15 transition-transform group-hover:scale-110 group-hover:shadow-xl">R</span>
+            <span className={cn("font-heading text-lg font-black tracking-tighter transition-colors", getTextColor())}>
+              Renato<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">.dev</span>
             </span>
           </Link>
         </div>

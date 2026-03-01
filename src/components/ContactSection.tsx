@@ -1,8 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone, Send, Linkedin, Github, Globe, Smartphone } from "lucide-react";
+import { Mail, MapPin, Send, Linkedin, Github, Globe, Smartphone, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { useLanguage } from "@/context/LanguageContext";
@@ -28,7 +27,6 @@ export function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulação de envio de formulário
     setTimeout(() => {
       toast({
         title: t('message_sent'),
@@ -39,84 +37,120 @@ export function ContactSection() {
     }, 1500);
   };
 
+  const contactMethods = [
+    {
+      icon: MapPin,
+      title: t('location'),
+      value: t('location_details'),
+      color: 'primary'
+    },
+    {
+      icon: Mail,
+      title: t('email'),
+      value: t('email_address'),
+      color: 'secondary'
+    },
+    {
+      icon: Smartphone,
+      title: t('whatsapp'),
+      value: t('phone_number'),
+      color: 'accent'
+    }
+  ];
+
+  const socialLinks = [
+    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com", label: "GitHub" },
+    { icon: Globe, href: "/", label: "Portfolio" },
+    { icon: MessageSquare, href: "https://wa.me/", label: "WhatsApp" },
+  ];
+
   return (
-    <section className="py-32 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px] -z-10" />
+    <section className="py-32 lg:py-40 relative overflow-hidden bg-background">
+      {/* Background Elements */}
+      <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-primary/5 rounded-full blur-[150px] opacity-30 -z-10 animate-float animation-delay-300" />
+      <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] opacity-20 -z-10 animate-float animation-delay-500" />
 
       <div className="container-padding max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 lg:gap-24 mt-6">
-          <div className="space-y-10">
-            <div>
-              <span className="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold tracking-wide mb-4 inline-block">
-                {t('contact')}
-              </span>
-              <h3 className="text-4xl font-bold font-heading mb-4 text-foreground">{t('contact_info')}</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {t('contact_availability')}
-              </p>
+        {/* Section Header */}
+        <div className="text-center mb-20 space-y-6 animate-fade-in-up">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 dark:bg-primary/5 border border-primary/30 dark:border-primary/20 text-primary text-xs font-bold tracking-widest uppercase w-fit mx-auto">
+            <Sparkles className="h-3.5 w-3.5" />
+            {t('contact')}
+          </div>
+          <h2 className="text-6xl sm:text-7xl lg:text-8xl font-heading font-black text-foreground leading-tight">
+            {t('contact_info')}
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light">
+            {t('contact_availability')}
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+          {/* Contact Info */}
+          <div className="space-y-12 animate-slide-up">
+            {/* Contact Methods */}
+            <div className="space-y-6">
+              {contactMethods.map((method, index) => {
+                const colorClasses = {
+                  primary: 'bg-primary/10 text-primary',
+                  secondary: 'bg-secondary/10 text-secondary',
+                  accent: 'bg-accent/10 text-accent',
+                };
+                return (
+                  <div key={index} className="group flex gap-5 p-6 rounded-xl glass-card border border-white/10 dark:border-white/5 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className={`w-12 h-12 rounded-lg ${colorClasses[method.color as keyof typeof colorClasses]} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                      <method.icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg text-foreground">{method.title}</h4>
+                      <p className="text-muted-foreground mt-1">{method.value}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="bg-primary/10 p-4 rounded-xl text-primary">
-                  <MapPin className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg mb-1">{t('location')}</h4>
-                  <p className="text-muted-foreground leading-relaxed">{t('location_details')}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-primary/10 p-4 rounded-xl text-primary">
-                  <Mail className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg mb-1">{t('email')}</h4>
-                  <p className="text-muted-foreground">{t('email_address')}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-primary/10 p-4 rounded-xl text-primary">
-                  <Smartphone className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg mb-1">{t('whatsapp')}</h4>
-                  <p className="text-muted-foreground">{t('phone_number')}</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4 pt-6">
-                {[
-                  { icon: Linkedin, href: "https://linkedin.com" },
-                  { icon: Github, href: "https://github.com" },
-                  { icon: Globe, href: "/" },
-                  { icon: Smartphone, href: "https://wa.me/" },
-                ].map((item, idx) => (
-                  <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" className="bg-surface border border-border p-3.5 rounded-full hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm">
-                    <item.icon className="h-5 w-5" />
+            {/* Social Links */}
+            <div>
+              <h5 className="font-bold mb-4 text-foreground">Conecte-se comigo:</h5>
+              <div className="flex gap-3 flex-wrap">
+                {socialLinks.map((link, idx) => (
+                  <a
+                    key={idx}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={link.label}
+                    className="group w-12 h-12 bg-gradient-to-br from-muted/50 to-muted/30 border border-border/50 rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:from-primary/10 hover:to-primary/5 transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-lg hover:shadow-primary/20"
+                  >
+                    <link.icon className="h-5 w-5" />
                   </a>
                 ))}
               </div>
             </div>
 
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d467692.0488551516!2d-46.92498673541676!3d-23.681531449428935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce448183a461d1%3A0x9ba94b08ff335bae!2zU8OjbyBQYXVsbywgU1A!5e0!3m2!1spt-BR!2sbr!4v1649260974285!5m2!1spt-BR!2sbr"
-              className="w-full h-64 rounded-2xl border border-border shadow-md opacity-90 hover:opacity-100 transition-opacity"
-              style={{ border: 0 }}
-              allowFullScreen={false}
-              loading="lazy"
-              title={t('location')}
-            ></iframe>
+            {/* Map */}
+            <div className="hidden lg:block rounded-2xl overflow-hidden border border-border/50 shadow-xl">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d467692.0488551516!2d-46.92498673541676!3d-23.681531449428935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce448183a461d1%3A0x9ba94b08ff335bae!2zU8OjbyBQYXVsbywgU1A!5e0!3m2!1spt-BR!2sbr!4v1649260974285!5m2!1spt-BR!2sbr"
+                className="w-full h-64 opacity-90 hover:opacity-100 transition-opacity"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                title={t('location')}
+              ></iframe>
+            </div>
           </div>
 
-          <div className="glass-card p-8 md:p-10 h-fit sticky top-24">
-            <h3 className="text-2xl font-bold font-heading mb-6 text-foreground">{t('send_message')}</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Contact Form */}
+          <div className="glass-card border border-white/10 dark:border-white/5 p-8 md:p-10 h-fit sticky top-24 animate-slide-up animation-delay-200">
+            <h3 className="text-3xl font-head bold font-heading mb-2 text-foreground">{t('send_message')}</h3>
+            <p className="text-muted-foreground mb-8 font-light">Preencha o formulário e entrarei em contato em breve</p>
+            
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-semibold ml-1">
+                <label htmlFor="name" className="text-sm font-semibold text-foreground ml-1">
                   {t('full_name')}
                 </label>
                 <Input
@@ -126,12 +160,12 @@ export function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="rounded-xl bg-background/50 border-primary/20 focus-visible:ring-primary h-12"
+                  className="rounded-lg bg-background/50 border-border/50 focus-visible:ring-primary focus-visible:border-primary h-11 px-4 font-medium"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-semibold ml-1">
+                <label htmlFor="email" className="text-sm font-semibold text-foreground ml-1">
                   {t('email')}
                 </label>
                 <Input
@@ -142,12 +176,12 @@ export function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="rounded-xl bg-background/50 border-primary/20 focus-visible:ring-primary h-12"
+                  className="rounded-lg bg-background/50 border-border/50 focus-visible:ring-primary focus-visible:border-primary h-11 px-4 font-medium"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-semibold ml-1">
+                <label htmlFor="subject" className="text-sm font-semibold text-foreground ml-1">
                   {t('subject')}
                 </label>
                 <Input
@@ -157,12 +191,12 @@ export function ContactSection() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="rounded-xl bg-background/50 border-primary/20 focus-visible:ring-primary h-12"
+                  className="rounded-lg bg-background/50 border-border/50 focus-visible:ring-primary focus-visible:border-primary h-11 px-4 font-medium"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-semibold ml-1">
+                <label htmlFor="message" className="text-sm font-semibold text-foreground ml-1">
                   {t('message')}
                 </label>
                 <Textarea
@@ -173,13 +207,13 @@ export function ContactSection() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="rounded-xl bg-background/50 border-primary/20 focus-visible:ring-primary resize-none"
+                  className="rounded-lg bg-background/50 border-border/50 focus-visible:ring-primary focus-visible:border-primary resize-none px-4 py-3 font-medium"
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full h-14 rounded-full text-base font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all hover:scale-[1.02]"
+                className="w-full h-12 rounded-lg text-base font-bold shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.02]"
                 disabled={isSubmitting}
               >
                 <Send className="mr-2 h-5 w-5" />

@@ -1,11 +1,9 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Award, Zap, Layers, BarChart3, TrendingUp } from "lucide-react";
+import { ArrowRight, Zap, Award, Layers, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
 import { useHeroData } from "@/hooks/useStrapi";
-
-const STRAPI_URL = 'http://localhost:1337';
 
 interface HeroMetric {
   id: number;
@@ -32,9 +30,8 @@ export function Hero() {
   const { t } = useLanguage();
   const { data: heroData, loading, error } = useHeroData();
 
-  const hero = heroData[0] as unknown as HeroData | undefined; // Pegar o primeiro item (único)
+  const hero = heroData[0] as unknown as HeroData | undefined;
 
-  // Fallback content logic
   const content = (error || !hero || loading) ? {
     subtitle: t('production_engineer'),
     title: t('portfolio_title'),
@@ -47,118 +44,139 @@ export function Hero() {
   } : hero;
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background pt-20">
-      {/* Background Effects */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/20 rounded-full blur-[120px] opacity-30 animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-accent/10 rounded-full blur-[100px] opacity-20" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-        {hero?.background_image && (
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-10 mix-blend-overlay"
-            style={{ backgroundImage: `url(${STRAPI_URL}${hero.background_image.url})` }}
-          />
-        )}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-24 pb-12">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Primary Blue Glow - Top Left */}
+        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[150px] opacity-40 -translate-x-1/3 -translate-y-1/3 animate-float" />
+        
+        {/* Secondary Cyan Glow - Bottom Right */}
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/15 rounded-full blur-[120px] opacity-30 translate-x-1/4 translate-y-1/4 animate-float animation-delay-300" />
+        
+        {/* Accent Purple Glow - Center */}
+        <div className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] opacity-25 animate-float animation-delay-500" />
       </div>
 
-      <div className="container-padding max-w-7xl mx-auto relative z-10 w-full grid lg:grid-cols-2 gap-12 items-center">
-        {/* Text Content */}
-        <div className="text-center lg:text-left space-y-8 animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold tracking-wide uppercase">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            {content.subtitle}
-          </div>
+      {/* Main Content Container */}
+      <div className="container-padding max-w-7xl mx-auto relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          
+          {/* Left: Text Content */}
+          <div className="space-y-8 animate-fade-in-up">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 dark:bg-primary/5 border border-primary/30 dark:border-primary/20 text-primary text-xs font-bold tracking-widest uppercase w-fit">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>{content.subtitle}</span>
+            </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold leading-[1.1] tracking-tight text-foreground">
-            {hero ? (
-              hero.title
-            ) : (
-              <>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/70">{t('portfolio_title')}</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary">Renato Santos</span>
-              </>
-            )}
-          </h1>
+            {/* Main Title */}
+            <div className="space-y-4">
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-heading font-black leading-[0.95] tracking-tighter text-foreground">
+                {hero ? (
+                  hero.title
+                ) : (
+                  <>
+                    <span className="block">{t('portfolio_title')}</span>
+                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">Renato</span>
+                  </>
+                )}
+              </h1>
+              
+              {/* Subtle line divider */}
+              <div className="section-divider mt-6" />
+            </div>
 
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            {content.description}
-          </p>
+            {/* Description */}
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-lg font-light">
+              {content.description}
+            </p>
 
-          <div className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
-            <Button size="lg" className="rounded-full px-8 h-14 text-base font-semibold shadow-xl shadow-primary/20 hover:scale-105 transition-transform" asChild>
-              <Link to={content.cta_primary_url}>
-                {content.cta_primary_text}
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            {content.cta_secondary_text && content.cta_secondary_url && (
-              <Button variant="outline" size="lg" className="rounded-full px-8 h-14 text-base font-semibold bg-background/50 backdrop-blur-sm border-border hover:bg-muted/50 transition-all" asChild>
-                <Link to={content.cta_secondary_url}>{content.cta_secondary_text}</Link>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <Button 
+                size="lg" 
+                className="rounded-lg px-8 h-14 text-base font-semibold shadow-xl shadow-primary/30 dark:shadow-primary/20 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 group"
+                asChild
+              >
+                <Link to={content.cta_primary_url}>
+                  {content.cta_primary_text}
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
-            )}
-          </div>
-        </div>
-
-        {/* Visual/Metrics Content */}
-        <div className="relative hidden lg:block animate-fade-in-up animation-delay-200">
-          <div className="relative z-10 grid grid-cols-2 gap-6">
-            {/* Dynamic Metrics or Fallback */}
-            {(hero?.metrics && hero.metrics.length > 0) ? (
-              hero.metrics.map((metric: any, idx: number) => (
-                <div key={metric.id} className={`glass-card p-8 flex flex-col items-center text-center justify-center space-y-2 hover:border-primary/50 transition-colors ${idx % 2 !== 0 ? 'translate-y-12' : ''}`}>
-                  <span className="text-4xl font-bold text-primary">{metric.value}</span>
-                  <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{metric.label}</span>
-                </div>
-              ))
-            ) : (
-              <>
-                <div className="glass-card p-8 flex flex-col items-center text-center space-y-4 hover:border-primary/50 transition-colors transform hover:-translate-y-1 duration-300">
-                  <div className="p-4 rounded-full bg-primary/10 text-primary">
-                    <Zap className="h-8 w-8" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">{t('process_automation')}</h3>
-                  </div>
-                </div>
-
-                <div className="glass-card p-8 flex flex-col items-center text-center space-y-4 translate-y-12 hover:border-accent/50 transition-colors transform hover:-translate-y-1 duration-300">
-                  <div className="p-4 rounded-full bg-accent/10 text-accent">
-                    <Award className="h-8 w-8" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">{t('awarded_projects')}</h3>
-                  </div>
-                </div>
-
-                <div className="glass-card p-8 flex flex-col items-center text-center space-y-4 hover:border-secondary/50 transition-colors transform hover:-translate-y-1 duration-300">
-                  <div className="p-4 rounded-full bg-secondary/10 text-secondary">
-                    <Layers className="h-8 w-8" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">{t('integrated_solutions')}</h3>
-                  </div>
-                </div>
-
-                <div className="glass-card p-8 flex flex-col items-center text-center space-y-2 translate-y-12 hover:border-primary/50 transition-colors transform hover:-translate-y-1 duration-300">
-                  <span className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-primary to-accent">+15</span>
-                  <span className="text-sm font-bold text-muted-foreground uppercase">{t('projects_implemented')}</span>
-                </div>
-              </>
-            )}
+              
+              {content.cta_secondary_text && content.cta_secondary_url && (
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="rounded-lg px-8 h-14 text-base font-semibold border-secondary/30 text-secondary hover:bg-secondary/5 dark:hover:bg-secondary/10 transition-all duration-300"
+                  asChild
+                >
+                  <Link to={content.cta_secondary_url}>{content.cta_secondary_text}</Link>
+                </Button>
+              )}
+            </div>
           </div>
 
-          {/* Decorative Elements behind grid */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-primary/20 via-transparent to-accent/20 blur-3xl -z-10 rounded-full" />
+          {/* Right: Visual Metrics Grid */}
+          <div className="relative hidden lg:block animate-fade-in-up animation-delay-200">
+            <div className="relative z-10 grid grid-cols-2 gap-5">
+              {(hero?.metrics && hero.metrics.length > 0) ? (
+                hero.metrics.map((metric: HeroMetric, idx: number) => (
+                  <div 
+                    key={metric.id} 
+                    className={`glass-card p-8 flex flex-col items-center justify-center text-center space-y-3 group hover:border-primary/50 transition-all duration-300 ${
+                      idx % 2 !== 0 ? 'translate-y-8' : ''
+                    }`}
+                  >
+                    <span className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary group-hover:from-secondary group-hover:to-accent transition-all duration-300">{metric.value}</span>
+                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{metric.label}</span>
+                  </div>
+                ))
+              ) : (
+                <>
+                  {/* Metric Card 1 */}
+                  <div className="glass-card p-8 flex flex-col items-center justify-center space-y-4 group hover:border-primary/50 transition-all duration-300">
+                    <div className="p-4 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 text-primary group-hover:scale-110 transition-transform duration-300">
+                      <Zap className="h-7 w-7" />
+                    </div>
+                    <h3 className="font-bold text-lg text-foreground">{t('process_automation')}</h3>
+                  </div>
+
+                  {/* Metric Card 2 */}
+                  <div className="glass-card p-8 flex flex-col items-center justify-center space-y-4 translate-y-8 group hover:border-secondary/50 transition-all duration-300">
+                    <div className="p-4 rounded-lg bg-gradient-to-br from-secondary/20 to-secondary/5 text-secondary group-hover:scale-110 transition-transform duration-300">
+                      <Award className="h-7 w-7" />
+                    </div>
+                    <h3 className="font-bold text-lg text-foreground">{t('awarded_projects')}</h3>
+                  </div>
+
+                  {/* Metric Card 3 */}
+                  <div className="glass-card p-8 flex flex-col items-center justify-center space-y-4 group hover:border-accent/50 transition-all duration-300">
+                    <div className="p-4 rounded-lg bg-gradient-to-br from-accent/20 to-accent/5 text-accent group-hover:scale-110 transition-transform duration-300">
+                      <Layers className="h-7 w-7" />
+                    </div>
+                    <h3 className="font-bold text-lg text-foreground">{t('integrated_solutions')}</h3>
+                  </div>
+
+                  {/* Metric Card 4 */}
+                  <div className="glass-card p-8 flex flex-col items-center justify-center space-y-3 translate-y-8 group hover:border-primary/50 transition-all duration-300">
+                    <span className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">+15</span>
+                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{t('projects_implemented')}</span>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Decorative background gradient */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 blur-3xl -z-10 rounded-full pointer-events-none" />
+          </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden md:flex flex-col items-center gap-2 opacity-50">
-        <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Scroll</span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-primary to-transparent" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+        <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Scroll</span>
+        <div className="w-[2px] h-8 bg-gradient-to-b from-primary to-transparent rounded-full" />
       </div>
     </section>
   );
