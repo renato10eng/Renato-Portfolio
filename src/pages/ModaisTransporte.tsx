@@ -6,24 +6,25 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Calendar, Tag, Info, BarChart2, PieChart, LineChart,
-   TrainFront, Plane, Truck, Ship, Route
- } from "lucide-react";
+import {
+  ArrowLeft, Calendar, Tag, Info, BarChart2, PieChart, LineChart,
+  TrainFront, Plane, Truck, Ship, Route
+} from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
-import { 
-  ResponsiveContainer, 
-  BarChart, 
-  Bar, 
-  PieChart as RePieChart, 
-  Pie, 
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  PieChart as RePieChart,
+  Pie,
   LineChart as ReLineChart,
   Line,
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  Legend, 
-  Cell 
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  Cell
 } from 'recharts';
 import { useLanguage } from "../context/LanguageContext";
 import MapaBrasilInterativo from "@/components/MapaBrasilInterativo";
@@ -127,14 +128,14 @@ const modaisInfo = {
     color: CORES_MODAIS.rodoviario,
     image: "images/rodoviario_img.jpg",
     //image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2675&auto=format&fit=crop",
-   // text: "O modal rodoviário é o principal meio de transporte de cargas no Brasil, respondendo por 61% da movimentação logística nacional. Atualmente, sua participação na matriz de transporte chega a 62%, acompanhada de um aumento de 4,2% nos custos em 2024. A atuação deste setor é concentrada em estados como São Paulo, Minas Gerais e Paraná, que dispõem das mais extensas redes de rodovias. Em uma comparação global, o Brasil ocupa a 5ª posição em extensão rodoviária (1,7 milhões de km), mas enfrenta o desafio de que apenas 12% dessas rodovias são pavimentadas, enquanto nos EUA esse índice atinge 65%. Apesar de sua importância e flexibilidade, os altos custos operacionais, a necessidade constante de manutenção e os impactos ambientais ressaltam a urgência de investimentos e inovações para assegurar sua competitividade e sustentabilidade."
+    // text: "O modal rodoviário é o principal meio de transporte de cargas no Brasil, respondendo por 61% da movimentação logística nacional. Atualmente, sua participação na matriz de transporte chega a 62%, acompanhada de um aumento de 4,2% nos custos em 2024. A atuação deste setor é concentrada em estados como São Paulo, Minas Gerais e Paraná, que dispõem das mais extensas redes de rodovias. Em uma comparação global, o Brasil ocupa a 5ª posição em extensão rodoviária (1,7 milhões de km), mas enfrenta o desafio de que apenas 12% dessas rodovias são pavimentadas, enquanto nos EUA esse índice atinge 65%. Apesar de sua importância e flexibilidade, os altos custos operacionais, a necessidade constante de manutenção e os impactos ambientais ressaltam a urgência de investimentos e inovações para assegurar sua competitividade e sustentabilidade."
   },
   ferroviario: {
     icon: "TrainFront",
     color: CORES_MODAIS.ferroviario,
     image: "images/Trem  png.png",
-   // image: "https://images.unsplash.com/photo-1541427468627-a89a96e5ca1d?q=80&w=2670&auto=format&fit=crop",
-   // text: "Responsável por 21% do transporte de cargas, o modal ferroviário destaca-se pela capacidade de movimentar grandes volumes com custos operacionais mais baixos e menor impacto ambiental. Este setor é especialmente relevante no transporte de minério, tendo movimentado 489,3 milhões de toneladas em 2023, com forte presença em estados como Minas Gerais, Pará e Maranhão. Em termos comparativos, a malha ferroviária brasileira, com 31 mil km, é 25 vezes menor que a dos EUA (300 mil km) e 4 vezes menor que a da China (124 mil km). Em 2023, foram investidos R$ 13,74 bilhões para expansão no Centro-Oeste, exemplificado por projetos como a Ferrovia Norte-Sul. Ademais, o potencial deste modal é evidente: cada trem pode substituir 220 caminhões, contribuindo para uma redução de 60% nas emissões de CO₂. Contudo, para reduzir a dependência dos modais tradicionais, torna-se imprescindível a modernização e a expansão contínua da malha ferroviária."
+    // image: "https://images.unsplash.com/photo-1541427468627-a89a96e5ca1d?q=80&w=2670&auto=format&fit=crop",
+    // text: "Responsável por 21% do transporte de cargas, o modal ferroviário destaca-se pela capacidade de movimentar grandes volumes com custos operacionais mais baixos e menor impacto ambiental. Este setor é especialmente relevante no transporte de minério, tendo movimentado 489,3 milhões de toneladas em 2023, com forte presença em estados como Minas Gerais, Pará e Maranhão. Em termos comparativos, a malha ferroviária brasileira, com 31 mil km, é 25 vezes menor que a dos EUA (300 mil km) e 4 vezes menor que a da China (124 mil km). Em 2023, foram investidos R$ 13,74 bilhões para expansão no Centro-Oeste, exemplificado por projetos como a Ferrovia Norte-Sul. Ademais, o potencial deste modal é evidente: cada trem pode substituir 220 caminhões, contribuindo para uma redução de 60% nas emissões de CO₂. Contudo, para reduzir a dependência dos modais tradicionais, torna-se imprescindível a modernização e a expansão contínua da malha ferroviária."
   },
   aquaviario: {
     icon: "Boat",
@@ -148,14 +149,14 @@ const modaisInfo = {
     color: CORES_MODAIS.aereo,
     image: "images/aereo_img.jpg",
     //image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2674&auto=format&fit=crop",
-   // text: "Embora o modal aéreo represente apenas 2% do volume total, ele é essencial para o transporte de cargas de alto valor agregado, como eletrônicos e fármacos. Em 2024, o setor registrou o transporte de 1,4 milhão de toneladas, com um crescimento de 12% especificamente no segmento de fármacos. Em uma análise comparativa, o Brasil conta com cerca de 3 mil aeroportos de carga, em contraste com os 13 mil dos EUA e 5 mil da China. Contudo, o modal aéreo enfrenta desafios significativos, como tarifas que podem ser até cinco vezes superiores às rodoviárias, além de uma infraestrutura concentrada majoritariamente em Guarulhos (SP), o que restringe sua expansão e eficiência."
+    // text: "Embora o modal aéreo represente apenas 2% do volume total, ele é essencial para o transporte de cargas de alto valor agregado, como eletrônicos e fármacos. Em 2024, o setor registrou o transporte de 1,4 milhão de toneladas, com um crescimento de 12% especificamente no segmento de fármacos. Em uma análise comparativa, o Brasil conta com cerca de 3 mil aeroportos de carga, em contraste com os 13 mil dos EUA e 5 mil da China. Contudo, o modal aéreo enfrenta desafios significativos, como tarifas que podem ser até cinco vezes superiores às rodoviárias, além de uma infraestrutura concentrada majoritariamente em Guarulhos (SP), o que restringe sua expansão e eficiência."
   },
   dutoviario: {
     icon: "Route",
     color: CORES_MODAIS.dutoviario,
     image: "images/dutoviario_img.jpg",
-   // image: "https://images.unsplash.com/photo-1578575752694-7b74ff3387a9?q=80&w=2670&auto=format&fit=crop",
-  //text: "Utilizado principalmente para o transporte de líquidos e gases – como petróleo, gás natural e produtos químicos – o modal dutoviário representa 4% do transporte total, movimentando aproximadamente 170 milhões de m³/ano. Em comparação global, a rede dutoviária brasileira, com 1.600 km, é 500 vezes menor que a dos EUA, que possui cerca de 800 mil km. Projetos estratégicos, como o Gasoduto Bolívia-Brasil, que abastece 70% da demanda industrial do Sudeste, evidenciam a importância desse modal. Entre suas principais vantagens estão os custos operacionais até 80% menores e um risco quase nulo de roubos, tornando-o um componente fundamental para otimizar o fluxo de commodities e insumos energéticos, além de complementar os demais modais."
+    // image: "https://images.unsplash.com/photo-1578575752694-7b74ff3387a9?q=80&w=2670&auto=format&fit=crop",
+    //text: "Utilizado principalmente para o transporte de líquidos e gases – como petróleo, gás natural e produtos químicos – o modal dutoviário representa 4% do transporte total, movimentando aproximadamente 170 milhões de m³/ano. Em comparação global, a rede dutoviária brasileira, com 1.600 km, é 500 vezes menor que a dos EUA, que possui cerca de 800 mil km. Projetos estratégicos, como o Gasoduto Bolívia-Brasil, que abastece 70% da demanda industrial do Sudeste, evidenciam a importância desse modal. Entre suas principais vantagens estão os custos operacionais até 80% menores e um risco quase nulo de roubos, tornando-o um componente fundamental para otimizar o fluxo de commodities e insumos energéticos, além de complementar os demais modais."
   }
 };
 
@@ -165,7 +166,7 @@ const sobreProjeto = {
   icon: "Info",
   image: "images/Modais de Transporte no Brasil.jpg",
   //image: "https://images.unsplash.com/photo-1492168732976-2676c584c675?q=80&w=2670&auto=format&fit=crop",
- // text: "Este dashboard interativo analisa a distribuição dos modais de transporte no Brasil, integrando dados atualizados até 2024 e projeções estratégicas para 2025. Com uma abordagem inovadora e visualmente intuitiva, o projeto oferece insights profundos sobre a infraestrutura logística nacional e incorpora análises do Painel Nacional de Logística (2025), mapeando os principais desafios e oportunidades do setor. Ao integrar informações provenientes de fontes oficiais e confiáveis, a ferramenta se torna estratégica para gestores, formuladores de políticas públicas e empresas do setor, facilitando a tomada de decisões que impulsionem a eficiência e a competitividade do transporte no país. Por meio do compartilhamento transparente de dados e análises, este projeto contribui para um desenvolvimento logístico mais sustentável e integrado."
+  // text: "Este dashboard interativo analisa a distribuição dos modais de transporte no Brasil, integrando dados atualizados até 2024 e projeções estratégicas para 2025. Com uma abordagem inovadora e visualmente intuitiva, o projeto oferece insights profundos sobre a infraestrutura logística nacional e incorpora análises do Painel Nacional de Logística (2025), mapeando os principais desafios e oportunidades do setor. Ao integrar informações provenientes de fontes oficiais e confiáveis, a ferramenta se torna estratégica para gestores, formuladores de políticas públicas e empresas do setor, facilitando a tomada de decisões que impulsionem a eficiência e a competitividade do transporte no país. Por meio do compartilhamento transparente de dados e análises, este projeto contribui para um desenvolvimento logístico mais sustentável e integrado."
 };
 
 
@@ -173,7 +174,7 @@ const sobreProjeto = {
 
 // Componente principal
 function ModaisTransporte() {
- 
+
   const [estadoSelecionado, setEstadoSelecionado] = useState<string>("todos");
   const [dadosEstado, setDadosEstado] = useState<EstadoDados | null>(null);
   const [tipoGrafico, setTipoGrafico] = useState<"barra" | "pizza" | "linha">("barra");
@@ -181,10 +182,10 @@ function ModaisTransporte() {
   const [ativo, setAtivo] = useState("todos");
   const [modoRanking, setModoRanking] = useState(false);
   //const [showInfo, setShowInfo] = useState(false);
-  
- 
+
+
   // Translations
-  
+
   const texts = {
     pt: {
       pageTitle: "Modais de Transporte no Brasil",
@@ -327,45 +328,45 @@ function ModaisTransporte() {
       readLess: "Read less"
     }
   };
-  
+
 
   // Get current language texts
   const content = language === 'en' ? texts.en : texts.pt;
 
   // Modifique a função getStateColor
-const getStateColor = (sigla: string): string => {
-  if (ativo === 'todos') {
-    if (estadoSelecionado === "todos") {
-      const estado = estadosDados.find(e => e.sigla === sigla);
-      if (!estado) return '#999999';
-      const predominant = Object.entries(estado.modais).reduce((a, b) => a[1] > b[1] ? a : b)[0];
-      return CORES_MODAIS[predominant as keyof typeof CORES_MODAIS];
+  const getStateColor = (sigla: string): string => {
+    if (ativo === 'todos') {
+      if (estadoSelecionado === "todos") {
+        const estado = estadosDados.find(e => e.sigla === sigla);
+        if (!estado) return '#999999';
+        const predominant = Object.entries(estado.modais).reduce((a, b) => a[1] > b[1] ? a : b)[0];
+        return CORES_MODAIS[predominant as keyof typeof CORES_MODAIS];
+      }
+      return sigla === estadoSelecionado
+        ? CORES_MODAIS[Object.entries(dadosEstado?.modais || {}).reduce((a, b) => a[1] > b[1] ? a : b)[0]]
+        : '#999999';
     }
-    return sigla === estadoSelecionado 
-      ? CORES_MODAIS[Object.entries(dadosEstado?.modais || {}).reduce((a, b) => a[1] > b[1] ? a : b)[0]]
-      : '#999999';
-  }
-  
-  if (estadoSelecionado === sigla) {
-    return CORES_MODAIS[ativo as keyof typeof CORES_MODAIS];
-  }
-  
-  return modoRanking 
-    ? '#999999' 
-    : CORES_MODAIS[ativo as keyof typeof CORES_MODAIS];
-};
- 
+
+    if (estadoSelecionado === sigla) {
+      return CORES_MODAIS[ativo as keyof typeof CORES_MODAIS];
+    }
+
+    return modoRanking
+      ? '#999999'
+      : CORES_MODAIS[ativo as keyof typeof CORES_MODAIS];
+  };
+
 
   // Atualize o handleEstadoSelecionado
-const handleEstadoSelecionado = (sigla: string) => {
-  if (sigla === estadoSelecionado) {
-    setEstadoSelecionado("todos");
-    setModoRanking(false);
-  } else {
-    setEstadoSelecionado(sigla);
-    setModoRanking(ativo !== 'todos');
-  }
-};
+  const handleEstadoSelecionado = (sigla: string) => {
+    if (sigla === estadoSelecionado) {
+      setEstadoSelecionado("todos");
+      setModoRanking(false);
+    } else {
+      setEstadoSelecionado(sigla);
+      setModoRanking(ativo !== 'todos');
+    }
+  };
 
 
   const handleDoubleClick = () => {
@@ -390,74 +391,74 @@ const handleEstadoSelecionado = (sigla: string) => {
         name: estado.nome,
         value: estado.modais[ativo as keyof typeof CORES_MODAIS],
         sigla: estado.sigla,
-        cor: modoRanking 
+        cor: modoRanking
           ? (estado.sigla === estadoSelecionado ? CORES_MODAIS[ativo] : '#999999')
           : CORES_MODAIS[ativo]
       })).sort((a, b) => b.value - a.value);
 
       return allStates;
     }
-  }, [ativo, dadosEstado, estadoSelecionado, modoRanking]);  
+  }, [ativo, dadosEstado, estadoSelecionado, modoRanking]);
 
 
   // Atualize o useEffect de dadosEstado
-useEffect(() => {
-  if (estadoSelecionado === "todos") {
-    // Dados agregados para todos os estados
-    const dadosAgregados = estadosDados.reduce((acc, estado) => ({
-      nome: "Todos os Estados",
-      sigla: "BR",
-      modais: {
-        rodoviario: acc.modais.rodoviario + estado.modais.rodoviario,
-        ferroviario: acc.modais.ferroviario + estado.modais.ferroviario,
-        aquaviario: acc.modais.aquaviario + estado.modais.aquaviario,
-        aereo: acc.modais.aereo + estado.modais.aereo,
-        dutoviario: acc.modais.dutoviario + estado.modais.dutoviario,
-      },
-      detalhes: {
-        kmRodovias: 0,
-        kmFerrovias: 0,
-        kmAquavias: 0,
-        aeroportos: 0,
-        kmDutos: 0
-      }
-    }));
-    
-    const total = estadosDados.length;
-    
-    // Função para calcular e formatar os valores
-    const calcularMediaFormatada = (valorTotal: number) => 
-      Number((valorTotal / total).toFixed(2));
+  useEffect(() => {
+    if (estadoSelecionado === "todos") {
+      // Dados agregados para todos os estados
+      const dadosAgregados = estadosDados.reduce((acc, estado) => ({
+        nome: "Todos os Estados",
+        sigla: "BR",
+        modais: {
+          rodoviario: acc.modais.rodoviario + estado.modais.rodoviario,
+          ferroviario: acc.modais.ferroviario + estado.modais.ferroviario,
+          aquaviario: acc.modais.aquaviario + estado.modais.aquaviario,
+          aereo: acc.modais.aereo + estado.modais.aereo,
+          dutoviario: acc.modais.dutoviario + estado.modais.dutoviario,
+        },
+        detalhes: {
+          kmRodovias: 0,
+          kmFerrovias: 0,
+          kmAquavias: 0,
+          aeroportos: 0,
+          kmDutos: 0
+        }
+      }));
 
-    setDadosEstado({
-      sigla: "BR",
-      nome: "Todos os Estados",
-      modais: {
-        rodoviario: calcularMediaFormatada(dadosAgregados.modais.rodoviario),
-        ferroviario: calcularMediaFormatada(dadosAgregados.modais.ferroviario),
-        aquaviario: calcularMediaFormatada(dadosAgregados.modais.aquaviario),
-        aereo: calcularMediaFormatada(dadosAgregados.modais.aereo),
-        dutoviario: calcularMediaFormatada(dadosAgregados.modais.dutoviario),
-      },
-      detalhes: {
-        kmRodovias: 1720000,
-        kmFerrovias: 30660,
-        kmAquavias: 41100,
-        aeroportos: 2499,
-        kmDutos: 53598
-      }
-    });
-  } else {
-    const estado = estadosDados.find(e => e.sigla === estadoSelecionado);
-    setDadosEstado(estado || null);
-  }
-}, [estadoSelecionado]);
+      const total = estadosDados.length;
 
- 
+      // Função para calcular e formatar os valores
+      const calcularMediaFormatada = (valorTotal: number) =>
+        Number((valorTotal / total).toFixed(2));
+
+      setDadosEstado({
+        sigla: "BR",
+        nome: "Todos os Estados",
+        modais: {
+          rodoviario: calcularMediaFormatada(dadosAgregados.modais.rodoviario),
+          ferroviario: calcularMediaFormatada(dadosAgregados.modais.ferroviario),
+          aquaviario: calcularMediaFormatada(dadosAgregados.modais.aquaviario),
+          aereo: calcularMediaFormatada(dadosAgregados.modais.aereo),
+          dutoviario: calcularMediaFormatada(dadosAgregados.modais.dutoviario),
+        },
+        detalhes: {
+          kmRodovias: 1720000,
+          kmFerrovias: 30660,
+          kmAquavias: 41100,
+          aeroportos: 2499,
+          kmDutos: 53598
+        }
+      });
+    } else {
+      const estado = estadosDados.find(e => e.sigla === estadoSelecionado);
+      setDadosEstado(estado || null);
+    }
+  }, [estadoSelecionado]);
+
+
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-700 to-primary-900 text-white py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-60 h-60 rounded-full bg-white/5"></div>
           <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-white/10"></div>
@@ -518,43 +519,43 @@ useEffect(() => {
 
             <div className="flex justify-center px-4">
               <div className="grid grid-cols-3 gap-4 md:grid-cols-6">
-                  {tipos.map((tipo) => (
-                    // Atualize a lógica dos botões
-                    <Button
-                      key={tipo.key}
-                      onClick={() => {
-                        if (tipo.key === 'todos') {
-                          setEstadoSelecionado('todos');
-                          setModoRanking(false);
-                        }
-                        setAtivo(tipo.key);
-                      }}
-                      style={{
-                        backgroundColor: ativo === tipo.key ? tipo.color : "",
-                        color: ativo === tipo.key ? "#fff" : "",
-                      }}
-                    >
-                      {tipo.label}
-                    </Button>
-                  ))}
+                {tipos.map((tipo) => (
+                  // Atualize a lógica dos botões
+                  <Button
+                    key={tipo.key}
+                    onClick={() => {
+                      if (tipo.key === 'todos') {
+                        setEstadoSelecionado('todos');
+                        setModoRanking(false);
+                      }
+                      setAtivo(tipo.key);
+                    }}
+                    style={{
+                      backgroundColor: ativo === tipo.key ? tipo.color : "",
+                      color: ativo === tipo.key ? "#fff" : "",
+                    }}
+                  >
+                    {tipo.label}
+                  </Button>
+                ))}
               </div>
             </div>
           </div>
 
           {/* Área de visualização principal */}
           <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
-             {/* Mapa ilustrativo do Brasil */}
+            {/* Mapa ilustrativo do Brasil */}
             <div className="lg:col-span-3 bg-muted/30 rounded-xl p-1 h-auto flex flex-col justify-center items-center relative border">
               {/* Aqui entra o mapa interativo */}
 
-               <MapaBrasilInterativo 
-                 onEstadoSelecionado={handleEstadoSelecionado}
-                 getStateColor={getStateColor}
-                 onDoubleClick={handleDoubleClick}
-               />
+              <MapaBrasilInterativo
+                onEstadoSelecionado={handleEstadoSelecionado}
+                getStateColor={getStateColor}
+                onDoubleClick={handleDoubleClick}
+              />
 
             </div>
-          
+
             {/* Gráfico de modais */}
             <div className="lg:col-span-3 bg-card rounded-xl shadow-sm border p-6">
               <div className="flex justify-between items-center mb-6">
@@ -570,11 +571,11 @@ useEffect(() => {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="name" />
                       <YAxis unit="%" />
-                      <Tooltip formatter={(value) => [`${value}%`, 'Utilização']} 
+                      <Tooltip formatter={(value) => [`${value}%`, 'Utilização']}
                         labelStyle={{
                           color: "#000"
                         }}
-                        />
+                      />
                       <Legend />
                       <Bar dataKey="value" name="Utilização (%)">
                         {dadosGrafico.map((entry, index) => (
@@ -602,11 +603,11 @@ useEffect(() => {
                           <Cell key={`cell-${index}`} fill={entry.cor} />
                         ))}
                       </Pie>
-                      <Tooltip formatter={(value) => `${value}%`} 
+                      <Tooltip formatter={(value) => `${value}%`}
                         labelStyle={{
                           color: "#000"
                         }}
-                        />
+                      />
                       <Legend />
                     </RePieChart>
                   </ResponsiveContainer>
@@ -616,13 +617,13 @@ useEffect(() => {
                   <ResponsiveContainer width="100%" height="100%">
                     <ReLineChart data={dadosGrafico}>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis 
-                        dataKey="name" 
+                      <XAxis
+                        dataKey="name"
                         type="category"
                         tickFormatter={(value) => value.slice(0, 3)}
                       />
                       <YAxis unit="%" />
-                      <Tooltip 
+                      <Tooltip
                         formatter={(value) => `${value}%`}
                         contentStyle={{ padding: '10px' }}
                         labelStyle={{
@@ -637,16 +638,16 @@ useEffect(() => {
                         stroke={CORES_MODAIS[ativo as keyof typeof CORES_MODAIS] || '#8884d8'}
                         strokeWidth={2}
                         dot={({
-                          cx, 
+                          cx,
                           cy,
                           payload
                         }) => (
-                          <circle 
-                            cx={cx} 
-                            cy={cy} 
-                            r={6} 
+                          <circle
+                            cx={cx}
+                            cy={cy}
+                            r={6}
                             fill={
-                              estadoSelecionado === payload?.sigla 
+                              estadoSelecionado === payload?.sigla
                                 ? CORES_MODAIS[ativo as keyof typeof CORES_MODAIS]
                                 : '#8884d8'
                             }
@@ -677,372 +678,372 @@ useEffect(() => {
                 </Tabs>
 
                 <Dialog>
-                <DialogTrigger asChild>
-                  <Button 
-                    variant="outline" 
-                    size="icon"
-                    aria-label="Ver detalhes da infraestrutura"
-                  >
-                    <Info className="h-4 w-4" />
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>{content.modalDetailsTitle}: {dadosEstado?.nome}</DialogTitle>
-                    {/* <DialogClose className="absolute right-4 top-4 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"> */}
+                  <DialogTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      aria-label="Ver detalhes da infraestrutura"
+                    >
+                      <Info className="h-4 w-4" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>{content.modalDetailsTitle}: {dadosEstado?.nome}</DialogTitle>
+                      {/* <DialogClose className="absolute right-4 top-4 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"> */}
                       {/* <X className="h-4 w-4" /> */}
                       <span className="sr-only">{content.closeButton}</span>
-                    {/* </DialogClose> */}
-                  </DialogHeader>
-                  
-                  {dadosEstado && (
-                    <div className="grid gap-4">
-                      <div className="flex items-center gap-4 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900/30">
-                        <div className="bg-amber-100 dark:bg-amber-900/50 p-2 rounded-full">
-                          <Truck className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                      {/* </DialogClose> */}
+                    </DialogHeader>
+
+                    {dadosEstado && (
+                      <div className="grid gap-4">
+                        <div className="flex items-center gap-4 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900/30">
+                          <div className="bg-amber-100 dark:bg-amber-900/50 p-2 rounded-full">
+                            <Truck className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                          </div>
+                          <div>
+                            <div className="font-medium">{content.transportModes.road}</div>
+                            <div className="text-xl font-bold">{dadosEstado.detalhes.kmRodovias.toLocaleString()} km</div>
+                            <div className="text-sm text-muted-foreground">{content.infraDetails.road}</div>
+                          </div>
                         </div>
-                        <div>
-                          <div className="font-medium">{content.transportModes.road}</div>
-                          <div className="text-xl font-bold">{dadosEstado.detalhes.kmRodovias.toLocaleString()} km</div>
-                          <div className="text-sm text-muted-foreground">{content.infraDetails.road}</div>
+
+                        <div className="flex items-center gap-4 p-3 rounded-lg bg-green-50 dark:bg-green-950/30 border border-green-100 dark:border-green-900/30">
+                          <div className="bg-green-100 dark:bg-green-900/50 p-2 rounded-full">
+                            <TrainFront className="h-5 w-5 text-green-600 dark:text-green-400" />
+                          </div>
+                          <div>
+                            <div className="font-medium">{content.transportModes.rail}</div>
+                            <div className="text-xl font-bold">{dadosEstado.detalhes.kmFerrovias.toLocaleString()} km</div>
+                            <div className="text-sm text-muted-foreground">{content.infraDetails.rail}</div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/30">
+                          <div className="bg-blue-100 dark:bg-blue-900/50 p-2 rounded-full">
+                            <Ship className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                          </div>
+                          <div>
+                            <div className="font-medium">{content.transportModes.water}</div>
+                            <div className="text-xl font-bold">{dadosEstado.detalhes.kmAquavias.toLocaleString()} km</div>
+                            <div className="text-sm text-muted-foreground">{content.infraDetails.water}</div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-4 p-3 rounded-lg bg-orange-50 dark:bg-orange-950/30 border border-orange-100 dark:border-orange-900/30">
+                          <div className="bg-orange-100 dark:bg-orange-900/50 p-2 rounded-full">
+                            <Plane className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                          </div>
+                          <div>
+                            <div className="font-medium">{content.transportModes.air}</div>
+                            <div className="text-xl font-bold">{dadosEstado.detalhes.aeroportos} aeroportos</div>
+                            <div className="text-sm text-muted-foreground">{content.infraDetails.air}</div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-4 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-900/30">
+                          <div className="bg-gray-100 dark:bg-gray-900/50 p-2 rounded-full">
+                            <Route className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                          </div>
+                          <div>
+                            <div className="font-medium">{content.transportModes.pipeline}</div>
+                            <div className="text-xl font-bold">{dadosEstado.detalhes.kmDutos.toLocaleString()} km</div>
+                            <div className="text-sm text-muted-foreground">{content.infraDetails.pipeline}</div>
+                          </div>
                         </div>
                       </div>
-                      
-                      <div className="flex items-center gap-4 p-3 rounded-lg bg-green-50 dark:bg-green-950/30 border border-green-100 dark:border-green-900/30">
-                        <div className="bg-green-100 dark:bg-green-900/50 p-2 rounded-full">
-                          <TrainFront className="h-5 w-5 text-green-600 dark:text-green-400" />
-                        </div>
-                        <div>
-                          <div className="font-medium">{content.transportModes.rail}</div>
-                          <div className="text-xl font-bold">{dadosEstado.detalhes.kmFerrovias.toLocaleString()} km</div>
-                          <div className="text-sm text-muted-foreground">{content.infraDetails.rail}</div>
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center gap-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/30">
-                        <div className="bg-blue-100 dark:bg-blue-900/50 p-2 rounded-full">
-                          <Ship className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                        </div>
-                        <div>
-                          <div className="font-medium">{content.transportModes.water}</div>
-                          <div className="text-xl font-bold">{dadosEstado.detalhes.kmAquavias.toLocaleString()} km</div>
-                          <div className="text-sm text-muted-foreground">{content.infraDetails.water}</div>
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center gap-4 p-3 rounded-lg bg-orange-50 dark:bg-orange-950/30 border border-orange-100 dark:border-orange-900/30">
-                        <div className="bg-orange-100 dark:bg-orange-900/50 p-2 rounded-full">
-                          <Plane className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-                        </div>
-                        <div>
-                          <div className="font-medium">{content.transportModes.air}</div>
-                          <div className="text-xl font-bold">{dadosEstado.detalhes.aeroportos} aeroportos</div>
-                          <div className="text-sm text-muted-foreground">{content.infraDetails.air}</div>
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center gap-4 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-900/30">
-                        <div className="bg-gray-100 dark:bg-gray-900/50 p-2 rounded-full">
-                          <Route className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-                        </div>
-                        <div>
-                          <div className="font-medium">{content.transportModes.pipeline}</div>
-                          <div className="text-xl font-bold">{dadosEstado.detalhes.kmDutos.toLocaleString()} km</div>
-                          <div className="text-sm text-muted-foreground">{content.infraDetails.pipeline}</div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </DialogContent>
-              </Dialog>
+                    )}
+                  </DialogContent>
+                </Dialog>
 
               </div>
             </div>
           </div>
-          
-           {/* Sobre o Projeto */}
-                     <div className="mt-16 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
-                       <div className="flex flex-col md:flex-row gap-6">
-                         <div className="md:w-1/3">
-                           <div className="rounded-lg overflow-hidden h-64">
-                             <img 
-                               src={sobreProjeto.image} 
-                               alt={content.projectAbout}
-                               className="w-full h-full object-cover" 
-                             />
-                           </div>
-                         </div>
-                         <div className="md:w-2/3 space-y-4">
-                           <div className="flex items-center gap-2">
-                             <div className="p-2 rounded-full bg-slate-100 dark:bg-slate-700">
-                               <Info className="h-5 w-5 text-slate-600 dark:text-slate-300" />
-                             </div>
-                             <h3 className="text-xl font-bold">{content.projectAbout}</h3>
-                           </div>
-                           
-                           <p className="text-muted-foreground">
-                             {content.textprojectAbout}
-                           </p>
-                         </div>
-                       </div>
-                     </div>
-                     
-                     {/* Modal Rodoviário */}
-                     <div className="mt-12 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
-                       <div className="flex flex-col md:flex-row gap-6">
-                         <div className="md:w-1/3">
-                           <div className="rounded-lg overflow-hidden h-64">
-                             <img 
-                               src={modaisInfo.rodoviario.image} 
-                               alt={content.modes.road}
-                               className="w-full h-full object-cover" 
-                             />
-                           </div>
-                         </div>
-                         <div className="md:w-2/3 space-y-4">
-                           <div className="flex items-center gap-2">
-                             <div className="p-2 rounded-full bg-amber-100 dark:bg-amber-900/30">
-                               <Truck className="h-5 w-5 text-amber-600 dark:text-amber-400" />
-                             </div>
-                             <h3 className="text-xl font-bold">{content.modes.road}</h3>
-                           </div>
-                           
-                           <p className="text-muted-foreground">
-                             {content.textRoad}
-                           </p>
-                         </div>
-                       </div>
-                     </div>
-                     
-                     {/* Modal Ferroviário */}
-                     <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
-                       <div className="flex flex-col md:flex-row gap-6">
-                         <div className="md:w-1/3">
-                           <div className="rounded-lg overflow-hidden h-64">
-                             <img 
-                               src={modaisInfo.ferroviario.image} 
-                               alt={content.modes.rail}
-                               className="w-full h-full object-cover" 
-                             />
-                           </div>
-                         </div>
-                         <div className="md:w-2/3 space-y-4">
-                           <div className="flex items-center gap-2">
-                             <div className="p-2 rounded-full bg-green-100 dark:bg-green-900/30">
-                               <TrainFront className="h-5 w-5 text-green-600 dark:text-green-400" />
-                             </div>
-                             <h3 className="text-xl font-bold">{content.modes.rail}</h3>
-                           </div>
-                           
-                           <p className="text-muted-foreground">
-                             {content.textRail}
-                           </p>
-                         </div>
-                       </div>
-                     </div>
-                     
-                     {/* Modal Aquaviário */}
-                     <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
-                       <div className="flex flex-col md:flex-row gap-6">
-                         <div className="md:w-1/3">
-                           <div className="rounded-lg overflow-hidden h-64">
-                             <img 
-                               src={modaisInfo.aquaviario.image} 
-                               alt={content.modes.water}
-                               className="w-full h-full object-cover" 
-                             />
-                           </div>
-                         </div>
-                         <div className="md:w-2/3 space-y-4">
-                           <div className="flex items-center gap-2">
-                             <div className="p-2 rounded-full bg-purple-100 dark:bg-purple-900/30">
-                               <Ship className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                             </div>
-                             <h3 className="text-xl font-bold">{content.modes.water}</h3>
-                           </div>
-                           
-                           <p className="text-muted-foreground">
-                             {content.textWaterway}
-                           </p>
-                         </div>
-                       </div>
-                     </div>
-                     
-                     {/* Modal Aéreo */}
-                     <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
-                       <div className="flex flex-col md:flex-row gap-6">
-                         <div className="md:w-1/3">
-                           <div className="rounded-lg overflow-hidden h-64">
-                             <img 
-                               src={modaisInfo.aereo.image} 
-                               alt={content.modes.air}
-                               className="w-full h-full object-cover" 
-                             />
-                           </div>
-                         </div>
-                         <div className="md:w-2/3 space-y-4">
-                           <div className="flex items-center gap-2">
-                             <div className="p-2 rounded-full bg-orange-100 dark:bg-orange-900/30">
-                               <Plane className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-                             </div>
-                             <h3 className="text-xl font-bold">{content.modes.air}</h3>
-                           </div>
-                           
-                           <p className="text-muted-foreground">
-                             {content.textAir}
-                           </p>
-                         </div>
-                       </div>
-                     </div>
-                     
-                     {/* Modal Dutoviário */}
-                     <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
-                       <div className="flex flex-col md:flex-row gap-6">
-                         <div className="md:w-1/3">
-                           <div className="rounded-lg overflow-hidden h-64">
-                             <img 
-                               src={modaisInfo.dutoviario.image} 
-                               alt={content.modes.pipeline}
-                               className="w-full h-full object-cover" 
-                             />
-                           </div>
-                         </div>
-                         <div className="md:w-2/3 space-y-4">
-                           <div className="flex items-center gap-2">
-                             <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-900/30">
-                               <Route className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-                             </div>
-                             <h3 className="text-xl font-bold">{content.modes.pipeline}</h3>
-                           </div>
-                           
-                           <p className="text-muted-foreground">
-                             {content.textPipeline}
-                           </p>
-                         </div>
-                       </div>
-                     </div>
-                     
-                     {/* Fontes de Dados */}
-                     <div className="mt-12">
-                       <h2 className="text-3xl font-bold mb-6">{content.dataSources}</h2>
-                       <div className="bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
-                         <div className="overflow-x-auto">
-                           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                             <thead className="bg-gray-50 dark:bg-gray-800">
-                               <tr>
-                                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                   {content.source}
-                                 </th>
-                                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                   {content.description}
-                                 </th>
-                                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                   {content.dateLabel}
-                                 </th>
-                               </tr>
-                             </thead>
-                             <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800">
-                               {fontesDados.map((fonte, index) => (
-                                 <tr key={index} className={index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-800/50' : ''}>
-                                   <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">
-                                     {fonte.fonte}
-                                   </td>
-                                   <td className="px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
-                                     {fonte.descricao[language]}
-                                   </td>
-                                   <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                                     {fonte.data}
-                                   </td>
-                                 </tr>
-                               ))}
-                             </tbody>
-                           </table>
-                         </div>
-                       </div>
-                     </div>
-                     
-                     {/* Seção Explicativa */}
-                     <div className="mt-16">
-                       <h2 className="text-3xl font-bold mb-6">{content.aboutTitle}</h2>
-                       
-                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                         <div>
-                           <p className="text-muted-foreground mb-6">
-                             {content.aboutP1}
-                           </p>
-                           
-                           <p className="text-muted-foreground mb-6">
-                             {content.aboutP2}
-                           </p>
-                           
-                           <h3 className="text-xl font-bold mt-8 mb-4">{content.aspectsTitle}</h3>
-                           <ul className="space-y-2 text-muted-foreground">
-                             {content.aspects.map((aspect, index) => (
-                               <li key={index} className="flex items-start gap-2">
-                                 <span className="bg-blue-500/20 text-blue-500 p-1 rounded-full mt-0.5">•</span>
-                                 <span>{aspect}</span>
-                               </li>
-                             ))}
-                           </ul>
-                         </div>
-                         
-                         <div className="bg-muted/30 p-6 rounded-xl">
-                           <h3 className="text-xl font-bold mb-4">{content.modesTitle}</h3>
-                           
-                           <div className="space-y-4">
-                             <div className="flex items-start gap-3">
-                               <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{ backgroundColor: CORES_MODAIS.rodoviario }}>
-                                 <Truck className="h-3.5 w-3.5 text-white" />
-                               </div>
-                               <div>
-                                 <h4 className="font-medium">{content.transportModes.road}</h4>
-                                 <p className="text-sm text-muted-foreground">{content.modeDescriptions.road}</p>
-                               </div>
-                             </div>
-                             
-                             <div className="flex items-start gap-3">
-                               <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{ backgroundColor: CORES_MODAIS.ferroviario }}>
-                                 <TrainFront className="h-3.5 w-3.5 text-white" />
-                               </div>
-                               <div>
-                                 <h4 className="font-medium">{content.transportModes.rail}</h4>
-                                 <p className="text-sm text-muted-foreground">{content.modeDescriptions.rail}</p>
-                               </div>
-                             </div>
-                             
-                             <div className="flex items-start gap-3">
-                               <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{ backgroundColor: CORES_MODAIS.aquaviario }}>
-                                 <Ship className="h-3.5 w-3.5 text-white" />
-                               </div>
-                               <div>
-                                 <h4 className="font-medium">{content.transportModes.water}</h4>
-                                 <p className="text-sm text-muted-foreground">{content.modeDescriptions.water}</p>
-                               </div>
-                             </div>
-                             
-                             <div className="flex items-start gap-3">
-                               <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{ backgroundColor: CORES_MODAIS.aereo }}>
-                                 <Plane className="h-3.5 w-3.5 text-white" />
-                               </div>
-                               <div>
-                                 <h4 className="font-medium">{content.transportModes.air}</h4>
-                                 <p className="text-sm text-muted-foreground">{content.modeDescriptions.air}</p>
-                               </div>
-                             </div>
-                             
-                             <div className="flex items-start gap-3">
-                               <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{ backgroundColor: CORES_MODAIS.dutoviario }}>
-                                 <Route className="h-3.5 w-3.5 text-white" />
-                               </div>
-                               <div>
-                                 <h4 className="font-medium">{content.transportModes.pipeline}</h4>
-                                 <p className="text-sm text-muted-foreground">{content.modeDescriptions.pipeline}</p>
-                               </div>
-                             </div>
-                           </div>
-                         </div>
-                       </div>
-                     </div>
+
+          {/* Sobre o Projeto */}
+          <div className="mt-16 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/3">
+                <div className="rounded-lg overflow-hidden h-64">
+                  <img
+                    src={sobreProjeto.image}
+                    alt={content.projectAbout}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="md:w-2/3 space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 rounded-full bg-slate-100 dark:bg-slate-700">
+                    <Info className="h-5 w-5 text-slate-600 dark:text-slate-300" />
+                  </div>
+                  <h3 className="text-xl font-bold">{content.projectAbout}</h3>
+                </div>
+
+                <p className="text-muted-foreground">
+                  {content.textprojectAbout}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Modal Rodoviário */}
+          <div className="mt-12 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/3">
+                <div className="rounded-lg overflow-hidden h-64">
+                  <img
+                    src={modaisInfo.rodoviario.image}
+                    alt={content.modes.road}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="md:w-2/3 space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                    <Truck className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <h3 className="text-xl font-bold">{content.modes.road}</h3>
+                </div>
+
+                <p className="text-muted-foreground">
+                  {content.textRoad}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Modal Ferroviário */}
+          <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/3">
+                <div className="rounded-lg overflow-hidden h-64">
+                  <img
+                    src={modaisInfo.ferroviario.image}
+                    alt={content.modes.rail}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="md:w-2/3 space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 rounded-full bg-green-100 dark:bg-green-900/30">
+                    <TrainFront className="h-5 w-5 text-green-600 dark:text-green-400" />
+                  </div>
+                  <h3 className="text-xl font-bold">{content.modes.rail}</h3>
+                </div>
+
+                <p className="text-muted-foreground">
+                  {content.textRail}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Modal Aquaviário */}
+          <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/3">
+                <div className="rounded-lg overflow-hidden h-64">
+                  <img
+                    src={modaisInfo.aquaviario.image}
+                    alt={content.modes.water}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="md:w-2/3 space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 rounded-full bg-purple-100 dark:bg-purple-900/30">
+                    <Ship className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h3 className="text-xl font-bold">{content.modes.water}</h3>
+                </div>
+
+                <p className="text-muted-foreground">
+                  {content.textWaterway}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Modal Aéreo */}
+          <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/3">
+                <div className="rounded-lg overflow-hidden h-64">
+                  <img
+                    src={modaisInfo.aereo.image}
+                    alt={content.modes.air}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="md:w-2/3 space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 rounded-full bg-orange-100 dark:bg-orange-900/30">
+                    <Plane className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                  </div>
+                  <h3 className="text-xl font-bold">{content.modes.air}</h3>
+                </div>
+
+                <p className="text-muted-foreground">
+                  {content.textAir}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Modal Dutoviário */}
+          <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/3">
+                <div className="rounded-lg overflow-hidden h-64">
+                  <img
+                    src={modaisInfo.dutoviario.image}
+                    alt={content.modes.pipeline}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="md:w-2/3 space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-900/30">
+                    <Route className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                  </div>
+                  <h3 className="text-xl font-bold">{content.modes.pipeline}</h3>
+                </div>
+
+                <p className="text-muted-foreground">
+                  {content.textPipeline}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Fontes de Dados */}
+          <div className="mt-12">
+            <h2 className="text-3xl font-bold mb-6">{content.dataSources}</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-xl border shadow-md p-6">
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                  <thead className="bg-gray-50 dark:bg-gray-800">
+                    <tr>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        {content.source}
+                      </th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        {content.description}
+                      </th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        {content.dateLabel}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800">
+                    {fontesDados.map((fonte, index) => (
+                      <tr key={index} className={index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-800/50' : ''}>
+                        <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">
+                          {fonte.fonte}
+                        </td>
+                        <td className="px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                          {fonte.descricao[language]}
+                        </td>
+                        <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                          {fonte.data}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          {/* Seção Explicativa */}
+          <div className="mt-16">
+            <h2 className="text-3xl font-bold mb-6">{content.aboutTitle}</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <p className="text-muted-foreground mb-6">
+                  {content.aboutP1}
+                </p>
+
+                <p className="text-muted-foreground mb-6">
+                  {content.aboutP2}
+                </p>
+
+                <h3 className="text-xl font-bold mt-8 mb-4">{content.aspectsTitle}</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  {content.aspects.map((aspect, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="bg-blue-500/20 text-blue-500 p-1 rounded-full mt-0.5">•</span>
+                      <span>{aspect}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-muted/30 p-6 rounded-xl">
+                <h3 className="text-xl font-bold mb-4">{content.modesTitle}</h3>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{ backgroundColor: CORES_MODAIS.rodoviario }}>
+                      <Truck className="h-3.5 w-3.5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">{content.transportModes.road}</h4>
+                      <p className="text-sm text-muted-foreground">{content.modeDescriptions.road}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{ backgroundColor: CORES_MODAIS.ferroviario }}>
+                      <TrainFront className="h-3.5 w-3.5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">{content.transportModes.rail}</h4>
+                      <p className="text-sm text-muted-foreground">{content.modeDescriptions.rail}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{ backgroundColor: CORES_MODAIS.aquaviario }}>
+                      <Ship className="h-3.5 w-3.5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">{content.transportModes.water}</h4>
+                      <p className="text-sm text-muted-foreground">{content.modeDescriptions.water}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{ backgroundColor: CORES_MODAIS.aereo }}>
+                      <Plane className="h-3.5 w-3.5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">{content.transportModes.air}</h4>
+                      <p className="text-sm text-muted-foreground">{content.modeDescriptions.air}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{ backgroundColor: CORES_MODAIS.dutoviario }}>
+                      <Route className="h-3.5 w-3.5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">{content.transportModes.pipeline}</h4>
+                      <p className="text-sm text-muted-foreground">{content.modeDescriptions.pipeline}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* Link para voltar */}
           <div className="mt-16 text-center">

@@ -8,7 +8,7 @@ import { SkillsSection } from "@/components/SkillsSection";
 import { StatsSection } from "@/components/StatsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Layout } from "@/components/Layout";
-import "@/styles/methodologyStyles.css";
+
 
 const Index = () => {
   return (

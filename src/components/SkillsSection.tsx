@@ -1,6 +1,6 @@
-
 import { Progress } from "@/components/ui/progress";
 import { useLanguage } from "@/context/LanguageContext";
+import { Badge } from "./ui/badge";
 
 interface Skill {
   name: string;
@@ -11,7 +11,7 @@ interface Skill {
 
 export function SkillsSection() {
   const { t } = useLanguage();
-  
+
   const skills: Skill[] = [
     { name: "Gestão de Projetos", nameKey: "project_management", level: 85, category: "engenharia" },
     { name: "Análise de Processos", nameKey: "process_analysis", level: 80, category: "engenharia" },
@@ -27,43 +27,58 @@ export function SkillsSection() {
   const logisticsSkills = skills.filter(skill => skill.category === "logistica");
 
   return (
-    <section className="py-20 bg-muted/50">
-      <div className="container">
-        <h2 className="section-title text-center">{t('professional_skills')}</h2>
-        <p className="section-subtitle text-center">
-          {t('skills_subtitle')}
-        </p>
-        
-        <div className="grid md:grid-cols-2 gap-12 mt-12">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold mb-6 font-heading text-primary-800 dark:text-primary-400">
-              {t('engineering_production')}
-            </h3>
-            <div className="space-y-6">
+    <section className="py-24 relative overflow-hidden bg-background">
+      {/* Background decoration */}
+      <div className="absolute bottom-0 left-1/4 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10" />
+
+      <div className="container-padding max-w-7xl mx-auto">
+        <div className="text-center mb-16 space-y-4">
+          <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold tracking-wide uppercase">
+            {t('professional_skills')}
+          </div>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground">
+            {t('skills_subtitle')}
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="glass-card p-8 md:p-10 space-y-8 animate-slide-up">
+            <div className="flex items-center gap-4 mb-2">
+              <div className="h-12 w-1 rounded-full bg-primary" />
+              <h3 className="text-2xl font-bold font-heading text-foreground">
+                {t('engineering_production')}
+              </h3>
+            </div>
+
+            <div className="space-y-8 h-full">
               {engineeringSkills.map((skill, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="font-medium">{t(skill.nameKey)}</span>
-                    <span>{skill.level}%</span>
+                <div key={index} className="space-y-3">
+                  <div className="flex justify-between items-end">
+                    <span className="font-medium text-lg text-foreground/90">{t(skill.nameKey)}</span>
+                    <span className="font-bold text-primary">{skill.level}%</span>
                   </div>
-                  <Progress value={skill.level} className="h-2" />
+                  <Progress value={skill.level} className="h-2.5 bg-muted" indicatorClassName="bg-gradient-to-r from-primary to-primary/70" />
                 </div>
               ))}
             </div>
           </div>
-          
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold mb-6 font-heading text-secondary-700 dark:text-secondary-400">
-              {t('logistics')}
-            </h3>
-            <div className="space-y-6">
+
+          <div className="glass-card p-8 md:p-10 space-y-8 animate-slide-up animation-delay-200">
+            <div className="flex items-center gap-4 mb-2">
+              <div className="h-12 w-1 rounded-full bg-secondary" />
+              <h3 className="text-2xl font-bold font-heading text-foreground">
+                {t('logistics')}
+              </h3>
+            </div>
+
+            <div className="space-y-8 h-full">
               {logisticsSkills.map((skill, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="font-medium">{t(skill.nameKey)}</span>
-                    <span>{skill.level}%</span>
+                <div key={index} className="space-y-3">
+                  <div className="flex justify-between items-end">
+                    <span className="font-medium text-lg text-foreground/90">{t(skill.nameKey)}</span>
+                    <span className="font-bold text-secondary">{skill.level}%</span>
                   </div>
-                  <Progress value={skill.level} className="h-2" />
+                  <Progress value={skill.level} className="h-2.5 bg-muted" indicatorClassName="bg-gradient-to-r from-secondary to-secondary/70" />
                 </div>
               ))}
             </div>

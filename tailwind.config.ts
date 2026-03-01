@@ -20,8 +20,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "sans-serif"],
-        heading: ["Montserrat", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
+        heading: ["Outfit", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -32,35 +32,10 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          50: "#EFF6FF",
-          100: "#DBEAFE",
-          200: "#BFDBFE",
-          300: "#93C5FD",
-          400: "#60A5FA",
-          500: "#3B82F6",
-          600: "#2563EB",
-          700: "#1D4ED8",
-          800: "#1E3A8A",
-          900: "#1E3A8A",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
-          50: "#ECFEFF",
-          100: "#CFFAFE",
-          200: "#A5F3FC",
-          300: "#67E8F9",
-          400: "#22D3EE",
-          500: "#0D9488",
-          600: "#0891B2",
-          700: "#0E7490",
-          800: "#155E75",
-          900: "#164E63",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-          orange: "#F97316",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -70,6 +45,10 @@ export default {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -78,16 +57,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))"
-        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -103,54 +72,15 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "fade-in": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(10px)"
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)"
-          }
-        },
-        "slide-in": {
-          "0%": {
-            transform: "translateX(-20px)",
-            opacity: "0"
-          },
-          "100%": {
-            transform: "translateX(0)",
-            opacity: "1"
-          }
-        },
-        "slide-up": {
-          "0%": {
-            transform: "translateY(20px)",
-            opacity: "0"
-          },
-          "100%": {
-            transform: "translateY(0)",
-            opacity: "1"
-          }
-        },
-        "scale-in": {
-          "0%": {
-            transform: "scale(0.95)",
-            opacity: "0"
-          },
-          "100%": {
-            transform: "scale(1)",
-            opacity: "1"
-          }
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" }
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s ease-out",
-        "slide-in": "slide-in 0.4s ease-out",
-        "slide-up": "slide-up 0.4s ease-out",
-        "scale-in": "scale-in 0.4s ease-out"
+        "fade-in-up": "fade-in-up 0.5s ease-out forwards",
       },
     },
   },

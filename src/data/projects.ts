@@ -15,6 +15,7 @@ export const projects: Project[] = [
     tagsEn: ["React", "Node.js", "PostgreSQL"],
     url: "/projetos/10",
     category: "fullstack",
+    status: "completed",
     date: "Mai 2024",
     dateEn: "May 2024",
     externalUrl: "https://example.com/ecommerce-platform"
@@ -153,5 +154,35 @@ export const projects: Project[] = [
     date: "Nov 2023",
     dateEn: "Nov 2023",
     externalUrl: "https://example.com/auth-system"
+  },
+  {
+    id: 11,
+    title: "SaaS de Automação com IA",
+    titleEn: "AI Automation SaaS",
+    description: "Plataforma SaaS para automação de fluxos de trabalho utilizando agentes de IA generativa. Em fase de testes beta com clientes selecionados.",
+    descriptionEn: "SaaS platform for workflow automation using generative AI agents. Currently in beta testing with selected clients.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2532&auto=format&fit=crop",
+    tags: ["Next.js", "OpenAI API", "Stripe", "Supabase"],
+    tagsEn: ["Next.js", "OpenAI API", "Stripe", "Supabase"],
+    url: "/projetos/11",
+    category: "fullstack",
+    status: "in-progress",
+    date: "Em desenvolvimento",
+    dateEn: "In development"
+  },
+  {
+    id: 12,
+    title: "Blockchain Logistics Chain",
+    titleEn: "Blockchain Logistics Chain",
+    description: "Sistema descentralizado para rastreabilidade imutável de cargas sensíveis utilizando Hyperledger Fabric.",
+    descriptionEn: "Decentralized system for immutable traceability of sensitive cargo using Hyperledger Fabric.",
+    image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2532&auto=format&fit=crop",
+    tags: ["Blockchain", "Hyperledger", "IoT"],
+    tagsEn: ["Blockchain", "Hyperledger", "IoT"],
+    url: "#",
+    category: "backend",
+    status: "planned",
+    date: "Q4 2024",
+    dateEn: "Q4 2024"
   }
 ];
