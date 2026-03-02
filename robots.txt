@@ -1,0 +1,19 @@
+# Permite acesso total para o robô do Google
+User-agent: Googlebot
+Allow: /
+
+# Permite acesso total para o robô do Bing
+User-agent: Bingbot
+Allow: /
+
+# Permite acesso total para o robô do Twitter (atualmente X, mas verifique atualizações)
+User-agent: Twitterbot
+Allow: /
+
+# Permite acesso total para o robô de scraping utilizado pelo Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# Permite acesso total para todos os outros robôs
+User-agent: *
+Allow: /
