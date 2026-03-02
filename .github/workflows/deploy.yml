@@ -1,16 +1,19 @@
 name: Deploy to GitHub Pages
+# Workflow atualizado para deploy automático com PAT
 
 on:
   push:
     branches:
-      - main # Trigga quando push/merge para main
+      - main  # Trigga quando push/merge para main
   pull_request:
     branches:
       - main  # Opcional: testa builds em PRs
 
-# Permissão correta para publicar no branch gh-pages
+# Permissões usadas quando o deploy é feito com PAT
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
@@ -18,23 +21,28 @@ jobs:
 
     steps:
       - name: Checkout
+        # Faz o checkout do código do repositório
         uses: actions/checkout@v4
 
       - name: Setup Node.js
+        # Configura a versão do Node.js usada no projeto
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Ajuste se usar outra versão  
+          node-version: '18'  # Ajuste se usar outra versão
           cache: 'npm'
 
       - name: Install dependencies
+        # Instala as dependências conforme o package-lock.json
         run: npm ci
 
       - name: Build
+        # Executa o build do projeto (gera a pasta dist)
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'
+        # Publica a pasta dist no branch gh-pages
+        if: github.ref == 'refs/heads/main'  # Só deploya se for main
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # Pasta gerada pelo build
+          github_token: ${{ secrets.GH_PAT }}  # PAT salvo como secret
+          publish_dir: ./dist  # Pasta gerada pelo build
