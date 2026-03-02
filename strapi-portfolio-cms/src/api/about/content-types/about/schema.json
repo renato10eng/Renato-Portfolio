@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About",
+    "description": "About section content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "experience_years": {
+      "type": "integer"
+    },
+    "experience_description": {
+      "type": "richtext"
+    },
+    "certifications": {
+      "type": "string"
+    },
+    "education": {
+      "type": "string"
+    },
+    "projects_count": {
+      "type": "string"
+    },
+    "clients": {
+      "type": "string"
+    },
+    "profile_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

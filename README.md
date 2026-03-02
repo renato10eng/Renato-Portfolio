@@ -48,7 +48,7 @@ Siga os passos abaixo para rodar o projeto localmente:
 
 1. **Clone o Repositório**:
    ```bash
-   git clone https://github.com/renato10eng/Renato-Portfolio-.git
+   git clone https://github.com/renato10eng/Renato-Portfolio.git
    cd Renato-portfolio
    ```
 
@@ -85,7 +85,7 @@ Para manter o projeto atualizado e sincronizado, use estes comandos:
 ### Clonagem Inicial (para Novos Usuários)
 Se você ainda não tem o projeto localmente:
 ```bash
-git clone https://github.com/renato10eng/Renato-Portfolio-.git
+git clone https://github.com/renato10eng/Renato-Portfolio.git
 cd Renato-portfolio
 npm ci  # Instala dependências
 ```
@@ -99,7 +99,7 @@ npm install  # ou npm ci para versão exata
 ### Sincronizar com o Repositório Remoto (Pull)
 Para baixar as últimas mudanças do GitHub:
 ```bash
-git pull origin master  # Atualiza a branch master
+git pull origin main  # Atualiza a branch main
 # Se estiver em outra branch: git pull origin <nome-da-branch>
 ```
 
@@ -108,7 +108,7 @@ Após fazer alterações e commits:
 ```bash
 git add .  # Adiciona todos os arquivos modificados
 git commit -m "Descrição das mudanças"
-git push origin master  # Envia para a branch master
+git push origin main  # Envia para a branch main
 # Para uma nova branch: git push -u origin nova-branch
 ```
 
@@ -138,7 +138,7 @@ Este projeto usa **GitHub Actions** para automatizar o deploy do site no GitHub 
 5. **Deploy**: Publica a `dist` na branch `gh-pages` usando um token seguro (PAT).
 
 - **Duração**: 1-3 minutos.
-- **Resultado**: O site é atualizado automaticamente em https://renato10eng.github.io/Renato-Portfolio-.
+- **Resultado**: O site é atualizado automaticamente em https://renato10eng.github.io/Renato-Portfolio.
 
 ### Cenários Comuns
 - **Trabalhando em uma Branch**: Push para `feature/xyz` → Código vai para GitHub, mas esteira não roda (site não muda).
@@ -147,7 +147,7 @@ Este projeto usa **GitHub Actions** para automatizar o deploy do site no GitHub 
 - **Subir Código sem Deploy**: Push para qualquer branch não-`main`.
 
 ### Como Monitorar
-- Vá para https://github.com/renato10eng/Renato-Portfolio-/actions.
+- Vá para https://github.com/renato10eng/Renato-Portfolio/actions.
 - Veja logs de runs passados. Clique em "Re-run jobs" se precisar repetir.
 
 Essa automação garante que o site esteja sempre atualizado após mudanças em produção!

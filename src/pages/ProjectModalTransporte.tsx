@@ -109,14 +109,14 @@ const ProjectModalTransporte = () => {
 
   // Carrega o conteúdo específico do projeto (usando projectContent) ou conteúdo padrão
   const projectSpecificContent = projectContent[project.id as keyof typeof projectContent];
-  const content = projectSpecificContent 
+  const content = projectSpecificContent
     ? (language === "en" ? projectSpecificContent.en : projectSpecificContent.pt)
     : (language === "en" ? defaultContent.en : defaultContent.pt);
 
   return (
     <Layout>
       {/* HERO SECTION */}
-      <section className="bg-gradient-to-br from-secondary-300 to-secondary text-white py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-secondary via-secondary/90 to-secondary/80 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-60 h-60 rounded-full bg-white/5"></div>
           <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-white/10"></div>
@@ -276,27 +276,25 @@ const ProjectModalTransporte = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                     {content.metrics.map((metric, index) => (
                       <div key={index} className="flex items-start gap-4">
-                        <div className={`bg-${
-                          metric.icon === "Zap"
-                            ? "green"
-                            : metric.icon === "Users"
+                        <div className={`bg-${metric.icon === "Zap"
+                          ? "green"
+                          : metric.icon === "Users"
                             ? "red"
                             : metric.icon === "BarChart2"
-                            ? "blue"
-                            : metric.icon === "MapPin"
-                            ? "blue"
-                            : "purple"
-                        }-100 dark:bg-${
-                          metric.icon === "Zap"
+                              ? "blue"
+                              : metric.icon === "MapPin"
+                                ? "blue"
+                                : "purple"
+                          }-100 dark:bg-${metric.icon === "Zap"
                             ? "green"
                             : metric.icon === "Users"
-                            ? "red"
-                            : metric.icon === "BarChart2"
-                            ? "blue"
-                            : metric.icon === "MapPin"
-                            ? "blue"
-                            : "purple"
-                        }-900/20 p-3 rounded-full`}>
+                              ? "red"
+                              : metric.icon === "BarChart2"
+                                ? "blue"
+                                : metric.icon === "MapPin"
+                                  ? "blue"
+                                  : "purple"
+                          }-900/20 p-3 rounded-full`}>
                           {getIconComponent(metric.icon)}
                         </div>
                         <div>
@@ -469,7 +467,7 @@ const ProjectModalTransporte = () => {
               </div>
 
               {/* Contato / Chamada para ação */}
-              <div className="bg-primary-50 dark:bg-primary-950/30 rounded-xl p-6">
+              <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-6">
                 <h3 className="font-semibold text-lg mb-2 dark:text-black">
                   {language === "en" ? "Need a Project?" : "Precisa de um Projeto?"}
                 </h3>

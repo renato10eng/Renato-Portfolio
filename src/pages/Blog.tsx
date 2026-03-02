@@ -51,7 +51,7 @@ const Blog = () => {
 
   return (
     <Layout>
-      <section className="bg-gradient-to-br from-primary-700 via-primary-800 to-primary-900 dark:from-primary-800 dark:via-primary-900 dark:to-black text-white py-20 pt-36 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white py-20 pt-36 relative overflow-hidden">
         <div className="container">
           <h1 className="text-4xl font-bold mb-4 text-center">Blog</h1>
           <p className="text-center text-xl max-w-2xl mx-auto text-white/80">

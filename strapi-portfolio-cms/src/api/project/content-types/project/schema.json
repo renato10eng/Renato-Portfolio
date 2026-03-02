@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": "Portfolio projects"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "titleEn": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "descriptionEn": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "tagsEn": {
+      "type": "json"
+    },
+    "url": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["frontend", "backend", "fullstack", "mobile"]
+    },
+    "date": {
+      "type": "string"
+    },
+    "dateEn": {
+      "type": "string"
+    },
+    "externalUrl": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "featured_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
