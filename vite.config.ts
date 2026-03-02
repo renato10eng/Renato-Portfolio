@@ -5,7 +5,7 @@ import svgr from "vite-plugin-svgr";
 import path from "path";
 
 export default defineConfig({
-  base: "/Renato-Portfolio-/",
+  base: "/Renato-Portfolio/",
   plugins: [react(), svgr()],
   resolve: {
     alias: {
